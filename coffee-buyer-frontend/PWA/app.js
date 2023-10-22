@@ -15,4 +15,9 @@ if ('serviceWorker' in navigator && 'Notification' in window) {
             });
         }
     });
+
+    document.getElementById("goToNextPage").addEventListener("click", function() {
+        // Redirect to another page when the button is clicked
+        window.location.href = "another-page.html";
+    });
 }

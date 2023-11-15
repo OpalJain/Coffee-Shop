@@ -19,13 +19,13 @@ public class jdbcUtils {
 		}
     }
 	
-	public static void Initialization() throws Exception {
+	public static void initialization() throws Exception {
 		connection = DriverManager.getConnection(URL, USER, PASSWORD);
 	}
 	
-	public static Connection getConnection() throws SQLException {
+	public static Connection getConnection() throws Exception {
+		initialization();
 		return connection;
-		
 	}
 	
 	public static void freeConnection(Connection connection) throws SQLException {

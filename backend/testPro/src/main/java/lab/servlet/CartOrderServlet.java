@@ -41,7 +41,7 @@ public class CartOrderServlet extends HttpServlet {
         // 模拟响应数据
          Gson gson = new Gson();
 
-          CartItem cartItem1 = new CartItem(1, 2);
+         CartItem cartItem1 = new CartItem(1, 2);
          CartItem cartItem2 = new CartItem(3, 2);
  
          List<CartItem> listCartItems = new ArrayList<>();

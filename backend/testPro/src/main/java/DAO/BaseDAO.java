@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,9 +14,9 @@ public abstract class BaseDAO {
 	 * @param sql 带占位符的SQL语句
 	 * @param params 占位符的值 传入的值必须等于？的位置
 	 * @return 执行影响的行数
-	 * @throws SQLException 
+	 * @throws Exception 
 	 */
-	public int excuteUpdate(String sql, Object... params) throws SQLException {
+	public int excuteUpdate(String sql, Object... params) throws Exception {
 		// 获取链接
 		Connection connection = jdbcUtils.getConnection();
 		
@@ -55,6 +54,7 @@ public abstract class BaseDAO {
 	 * @throws Exception 
 	 */
 	
+	@SuppressWarnings("deprecation")
 	public <T> List<T> executeQuery(Class<T> clazz, String sql, Object... params) throws Exception{
 		// 获取链接
 		Connection connection = jdbcUtils.getConnection();

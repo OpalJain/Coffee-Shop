@@ -7,6 +7,8 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.junit.jupiter.api.Test;
+
+import com.google.gson.Gson;
 /*
  * AddOrderToCart(id)
  * 
@@ -46,7 +48,7 @@ public class CartDAO extends BaseDAO{
     
     public CartOrders getCartOrders() throws Exception {
     	String sqlString = "SELECT * FROM cart_orders;";
-    	List<CartItem> cartOrdersList = executeQuery(CartItem.class, "SELECT * FROM cart_orders;");
+    	List<CartItem> cartOrdersList = executeQuery(CartItem.class, sqlString);
     	
     	CartOrders cartOrders = new CartOrders(cartOrdersList);
 		return cartOrders;
@@ -60,7 +62,11 @@ public class CartDAO extends BaseDAO{
 			cartDAO.increaseOrderQuantity(2);
 			cartDAO.decreaseOrderQuantity(2);
 			cartDAO.removeOrderFromCart(2);
-			cartDAO.addOrderToCart(3);
+			cartDAO.addOrderToCart(2);
+			
+			Gson gson = new Gson();
+			String json = gson.toJson(cartOrders);
+			System.out.println(json);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

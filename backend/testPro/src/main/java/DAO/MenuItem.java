@@ -11,27 +11,30 @@ public class MenuItem {
     private String name;
     private String description;
     private String image;
-    private int price;
+    private double price;
 
     // Constructors, getters, and setters (generated or manually implemented) go here
-    public MenuItem(int id, String name, String description, String image, int price) {
+    public MenuItem(int id, String name, String description, String image, double price) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.image = image;
         this.price = price;
     }
-
-    @Override
-    public String toString() {
-        return "MenuItem{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", image='" + image + '\'' +
-                ", price=" + price +
-                '}';
+    public MenuItem() {
+    	
     }
+
+//    @Override
+//    public String toString() {
+//        return "MenuItem{" +
+//                "id=" + id +
+//                ", name='" + name + '\'' +
+//                ", description='" + description + '\'' +
+//                ", image='" + image + '\'' +
+//                ", price=" + price +
+//                '}';
+//    }
     
     public String tryJson() {
         Gson gson = new Gson();

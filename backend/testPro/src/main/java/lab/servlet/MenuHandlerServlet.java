@@ -41,7 +41,7 @@ public class MenuHandlerServlet extends HttpServlet {
 	        MenuItem menuItem5 = new MenuItem(5, "Coffee Item", "This is a delicious cup of coffee.", "coffee-cup.svg", 50);
 	        MenuItem menuItem6 = new MenuItem(6, "Coffee Item", "This is a delicious cup of coffee.", "coffee-cup.svg", 60);
 
-	        Menu menu = new Menu(Arrays.asList(menuItem1, menuItem2, menuItem3, menuItem4, menuItem5, menuItem6));
+	        MenuObjs menu = new MenuObjs(Arrays.asList(menuItem1, menuItem2, menuItem3, menuItem4, menuItem5, menuItem6));
 	        
 	        String testString = menuItem1.tryJson();
 

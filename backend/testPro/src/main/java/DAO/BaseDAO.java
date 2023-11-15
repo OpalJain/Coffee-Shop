@@ -1,5 +1,6 @@
 package DAO;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -97,7 +98,16 @@ public abstract class BaseDAO {
 				 * 参数2: 具体的属性值
 				 * 
 				 */
-				field.set(t, valueObject);
+		        // 进行类型转换
+		        if (valueObject != null) {
+		            if (field.getType() == double.class || field.getType() == Double.class) {
+		                // 如果属性是 double 类型，而数据库中是 BigDecimal，则进行类型转换
+		                field.set(t, ((BigDecimal) valueObject).doubleValue());
+		            } else {
+		                // 其他情况直接设置属性值
+		                field.set(t, valueObject);
+		            }
+		        }
 			}
 			
 			list.add(t);

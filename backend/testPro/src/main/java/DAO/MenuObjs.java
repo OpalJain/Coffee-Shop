@@ -3,13 +3,13 @@ package DAO;
 import java.util.List;
 import com.google.gson.Gson;
 
-public class Menu {
+public class MenuObjs {
     private List<MenuItem> menu;
 
     // Constructors, getters, and setters (generated or manually implemented) go here
 
 
-    public Menu(List<MenuItem> menu) {
+    public MenuObjs(List<MenuItem> menu) {
         this.menu = menu;
     }
 

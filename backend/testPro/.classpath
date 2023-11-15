@@ -8,13 +8,13 @@
 	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="/Users/sara/Documents/CODE/SDK/apache-tomcat-10.1.13/lib/servlet-api.jar"/>
-	<classpathentry kind="lib" path="/Users/sara/Documents/CODE/SDK/gson-2.10.jar">
+	<classpathentry exported="true" kind="lib" path="/Users/sara/Documents/CODE/SDK/apache-tomcat-10.1.13/lib/servlet-api.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/sara/Documents/CODE/SDK/gson-2.10.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/labJDBC/libs/mysql-connector-java-8.0.19.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
+	<classpathentry exported="true" kind="lib" path="/Users/sara/Documents/CODE/SDK/mysql-connector-java-8.0.19.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

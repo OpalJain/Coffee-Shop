@@ -2,8 +2,6 @@ package DAO;
 
 import java.util.List;
 
-import javax.sql.DataSource;
-
 import org.junit.jupiter.api.Test;
 
 import com.google.gson.Gson;

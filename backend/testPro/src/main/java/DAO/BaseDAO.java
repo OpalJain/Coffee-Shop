@@ -23,8 +23,8 @@ public abstract class BaseDAO {
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		// 5. 占位符赋值
 		// 可变参数可以当作数组使用 数据库索引从1开始，因此这个需要从1 开始做循环
-		for (int i = 1; i < params.length; i++) {
-			preparedStatement.setObject(i, params[i]);
+		for (int i = 1; i <= params.length; i++) {
+			preparedStatement.setObject(i, params[i - 1]);
 		}
 		
 		int rows = preparedStatement.executeUpdate();
@@ -82,7 +82,7 @@ public abstract class BaseDAO {
 			T t = clazz.newInstance(); // 调用类的无参构造函数实例化对象！
 			
 			// 自动遍历，注意要从1开始
-			for (int i = 0; i <= columnCount; i++) {
+			for (int i = 1; i <= columnCount; i++) {
 				
 				// 对象的属性值
 				Object valueObject = resultSet.getObject(i);

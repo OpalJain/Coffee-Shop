@@ -5,6 +5,8 @@ import java.sql.SQLException;
 import java.util.List;
 
 import javax.sql.DataSource;
+
+import org.junit.jupiter.api.Test;
 /*
  * AddOrderToCart(id)
  * 
@@ -37,15 +39,32 @@ public class CartDAO extends BaseDAO{
     public void increaseOrderQuantity(int orderId) throws Exception {
     	String sqlString = "UPDATE cart_orders SET quantity = quantity + 1 WHERE id = ?;";
     	int i = excuteUpdate(sqlString, orderId);
+    	if (i == 0) {
+			System.out.println("Fail at increaseOrderQuantity!!!");
+		}
     }
     
     public CartOrders getCartOrders() throws Exception {
     	String sqlString = "SELECT * FROM cart_orders;";
     	List<CartItem> cartOrdersList = executeQuery(CartItem.class, "SELECT * FROM cart_orders;");
-        // 处理 cartOrdersList
     	
     	CartOrders cartOrders = new CartOrders(cartOrdersList);
 		return cartOrders;
+    }
+    
+    @Test
+    public void testCURD() {
+    	CartDAO cartDAO = new CartDAO();
+    	try {
+			CartOrders cartOrders = cartDAO.getCartOrders();
+			cartDAO.increaseOrderQuantity(2);
+			cartDAO.decreaseOrderQuantity(2);
+			cartDAO.removeOrderFromCart(2);
+			cartDAO.addOrderToCart(3);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
 

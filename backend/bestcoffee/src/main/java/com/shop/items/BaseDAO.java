@@ -1,4 +1,4 @@
-package DAO;
+package com.shop.items;
 
 import java.math.BigDecimal;
 import java.sql.Connection;

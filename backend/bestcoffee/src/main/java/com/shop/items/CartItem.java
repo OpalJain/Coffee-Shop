@@ -1,9 +1,7 @@
-package DAO;
-
-//import com.google.gson.Gson;
+package com.shop.items;
 
 public class CartItem {
-    private int id;
+	private int id;
     private int quantity;
 
     public CartItem() {
@@ -39,12 +37,9 @@ public class CartItem {
                 ", quantity=" + quantity +
                 '}';
     }
-    
-    public static void main(String[] args) {
-//    	Gson gson = new Gson();
-//
-//    	CartItem cartItem = new CartItem(1,2);
-//    	String json = gson.toJson(cartItem);
-//    	System.out.println(json);
-    }
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
 }

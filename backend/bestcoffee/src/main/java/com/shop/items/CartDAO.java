@@ -1,14 +1,7 @@
-package DAO;
+package com.shop.items;
 
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.List;
 
-import javax.sql.DataSource;
-
-import org.junit.jupiter.api.Test;
-
-import com.google.gson.Gson;
 /*
  * AddOrderToCart(id)
  * 
@@ -31,6 +24,7 @@ public class CartDAO extends BaseDAO{
     public void removeOrderFromCart(int orderId) throws Exception {
     	String sqlString = "DELETE FROM cart_orders WHERE id = ?;";
     	int i = excuteUpdate(sqlString, orderId);
+    	System.out.printf("removeOrderFromCart result is %d \n", i);
     }
 
     public void decreaseOrderQuantity(int orderId) throws Exception {
@@ -54,24 +48,6 @@ public class CartDAO extends BaseDAO{
 		return cartOrders;
     }
     
-    @Test
-    public void testCURD() {
-    	CartDAO cartDAO = new CartDAO();
-    	try {
-			CartOrders cartOrders = cartDAO.getCartOrders();
-			cartDAO.increaseOrderQuantity(2);
-			cartDAO.decreaseOrderQuantity(2);
-			cartDAO.removeOrderFromCart(2);
-			cartDAO.addOrderToCart(2);
-			
-			Gson gson = new Gson();
-			String json = gson.toJson(cartOrders);
-			System.out.println(json);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    }
 
 
 }

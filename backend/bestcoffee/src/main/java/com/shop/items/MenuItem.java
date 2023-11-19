@@ -1,7 +1,4 @@
-package DAO;
-
-import java.util.ArrayList;
-import java.util.List;
+package com.shop.items;
 
 import com.google.gson.Gson;
 
@@ -45,3 +42,4 @@ public class MenuItem {
         return json;
     }
 }
+

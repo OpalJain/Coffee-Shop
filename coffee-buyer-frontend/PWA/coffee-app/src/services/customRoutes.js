@@ -7,8 +7,9 @@ server.use(middlewares);
 server.use(jsonServer.bodyParser);
 
   server.get('/cart-orders', (req, res) => {
-	console.log(`Received GET request /cart-orders `);
-	res.status(200).json(router.db.get('cart-orders').value());
+	const data = router.db.get('cart-orders').value();
+	console.log(`Received GET request /cart-orders`, data);
+	res.status(200).json(rdata.value());
   });
 
   /*server.get('/menu/undefined', (req, res) => {
@@ -16,10 +17,9 @@ server.use(jsonServer.bodyParser);
 	res.status(200).json(router.db.get("menu").value());
   });*/
   server.get('/menu', (req, res) => {
-	console.log(`----------------Received GET request /menu `);
+	const data = router.db.get('cart-menu').value();
+	console.log("----------------Received GET request /menu ",data);
 	res.status(200).json(router.db.get("menu").value());
-	//console.log(router.db.get('menu').value());
-	//console.log(router.db.value());
   });
 
 server.put('/cart-orders/:id/increment', (req, res) => {

@@ -9,27 +9,8 @@ export default function Menu() {
 
 	useEffect(() => {
 		console.log("GetMenuData().then(data => setMenuData(data)) ");
-		GetMenuData().then(data => {setMenuData(data); console.log(data)}) // debug by xina
+		GetMenuData().then(data => {setMenuData(data); console.log(JSON.stringify(data))}) // debug by xina
 	}, [])
-	/*const menuItemData1 = {
-		id: 1,
-		name: 'Coffee Item',
-		description: 'This is a delicious cup of coffee.',
-		image: "coffee-cup.svg",
-		price: 40
-	  };
-	  const menuItemData2 = {
-		id: 2,
-		name: 'Coffee Item',
-		description: 'This is a delicious cup of coffee.',
-		image: "coffee-cup.svg",
-		price: 30
-	  };
-
-	var menuData = [
-		menuItemData1,menuItemData2,menuItemData2,menuItemData2,menuItemData2,menuItemData1
-	  ];*/
-
 	
 	const menuItems = menuData ? menuData.map((menuItemData, index) =>
 			<MenuProduct key={index} data={menuItemData}/>) :

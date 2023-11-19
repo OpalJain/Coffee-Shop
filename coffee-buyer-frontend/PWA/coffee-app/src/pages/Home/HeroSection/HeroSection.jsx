@@ -19,11 +19,7 @@ export default function HeroSection() {
                     slidesPerView={1}
                     speed={2000}
                     loop
-                    // autoplay=
-                    //     {{
-                    //         delay: 2000,
-                    //         disableOnInteraction: false
-                    //     }}
+    
                     style={{height: '100%'}}
                 >
                     <SwiperSlide style={{height: '100%'}}>

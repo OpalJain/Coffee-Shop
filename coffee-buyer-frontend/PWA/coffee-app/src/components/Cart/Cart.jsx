@@ -40,6 +40,8 @@ export default function Cart() {
 				let subtotal = 0;
 				let ordersCount = 0;
 				const cartDataPromises = cartOrders.map(async (cartOrder) => {
+					console.log("cartDataPromises cartOderid =  ", cartOrder.id);
+					console.log(JSON.stringify(cartOrder));
 					const productData = await GetMenuProductById(cartOrder.id)
 					subtotal += productData.price * cartOrder.quantity
 					ordersCount += cartOrder.quantity

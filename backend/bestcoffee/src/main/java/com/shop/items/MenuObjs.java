@@ -2,8 +2,6 @@ package com.shop.items;
 
 import java.util.List;
 import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 
 public class MenuObjs {
     private List<MenuItem> menu;

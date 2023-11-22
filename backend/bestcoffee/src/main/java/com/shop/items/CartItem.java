@@ -5,7 +5,6 @@ public class CartItem {
     private int quantity;
 
     public CartItem() {
-        // 默认构造函数
     }
 
     public CartItem(int id, int quantity) {
@@ -13,7 +12,6 @@ public class CartItem {
         this.quantity = quantity;
     }
 
-    // Getter 和 Setter 方法
     public int getId() {
         return id;
     }

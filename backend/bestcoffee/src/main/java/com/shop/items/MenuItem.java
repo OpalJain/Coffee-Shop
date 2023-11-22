@@ -22,16 +22,6 @@ public class MenuItem {
     	
     }
 
-//    @Override
-//    public String toString() {
-//        return "MenuItem{" +
-//                "id=" + id +
-//                ", name='" + name + '\'' +
-//                ", description='" + description + '\'' +
-//                ", image='" + image + '\'' +
-//                ", price=" + price +
-//                '}';
-//    }
     
     public String tryJson() {
         Gson gson = new Gson();

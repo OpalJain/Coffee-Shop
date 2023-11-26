@@ -2,7 +2,6 @@
  * 
  */
 let current_inventory = {
-
 };
 
 
@@ -76,21 +75,6 @@ function updateRow(input) {
 }
 
 function getMenuData() {
-    console.log("getting in getMenuData()----");
-    axios.get('http://localhost:5001/bestcoffee/menu')
-    .then(function (response) {
-		console.log("sending request to 5001");
-        var orderDataContainer = document.querySelector("#current_inventory_list");
-        // orderDataContainer.innerHTML = response.data;
-        // console.log(response.data);
-    })
-    .catch(function (error) {
-        // handle errors
-        console.error('Error fetching orders data:', error);
-    });
-}
-
-function clearCurrentInventory() {
 	console.log("getting in clearCurrentInventory()----");
     console.log(JSON.stringify(current_inventory));
     var tr = ''; 
@@ -125,13 +109,6 @@ function clearCurrentInventory() {
     document.querySelector("#current_inventory_list").innerHTML = "";
 }
 
-function clearIncomingOrder() {
-    document.querySelector("#incoming_inventory_list").innerHTML = "";
-}
-
-function clearOutgoingOrder() {
-    document.querySelector("#outgoing_inventory_list").innerHTML = "";
-}
 
 function addCurrentInventory() {
     let productName = document.querySelector("#current_order_product_name").value;
@@ -185,76 +162,4 @@ function addCurrentInventory() {
 	  .catch(error => {
 	    console.error('Error sending data:', error);
 	  });
-}
-
-function addIncomingOrder() {
-    let productName = document.querySelector(
-        "#incoming_order_product_name"
-    ).value;
-    let productBrand = document.querySelector(
-        "#incoming_order_product_brand"
-    ).value;
-    let productPrice = document.querySelector(
-        "#incoming_order_product_price"
-    ).value;
-    let productQuantity = document.querySelector(
-        "#incoming_order_product_quantity"
-    ).value;
-
-    if (
-        is_empty(productName) ||
-        is_empty(productBrand) ||
-        is_empty(productPrice) ||
-        is_empty(productQuantity)
-    ) {
-        alert("Please fill out all fields");
-        return;
-    }
-
-    let tbody = document.querySelector("#incoming_inventory_list");
-
-    let tr = `<tr>
-    <th scope='row'>${getIndex(tbody) + 1}</th>
-    <td>${productName}</td>
-    <td>${productBrand}</td>
-    <td>${productQuantity}</td>
-    <td>$${productPrice}</td>`;
-
-    tbody.innerHTML += tr;
-}
-
-function addOutgoingOrder() {
-    let productName = document.querySelector(
-        "#outgoing_order_product_name"
-    ).value;
-    let productBrand = document.querySelector(
-        "#outgoing_order_product_brand"
-    ).value;
-    let productPrice = document.querySelector(
-        "#outgoing_order_product_price"
-    ).value;
-    let productQuantity = document.querySelector(
-        "#outgoing_order_product_quantity"
-    ).value;
-
-    if (
-        is_empty(productName) ||
-        is_empty(productBrand) ||
-        is_empty(productPrice) ||
-        is_empty(productQuantity)
-    ) {
-        alert("Please fill out all fields");
-        return;
-    }
-
-    let tbody = document.querySelector("#outgoing_inventory_list");
-
-    let tr = `<tr>
-    <th scope='row'>${getIndex(tbody) + 1}</th>
-    <td>${productName}</td>
-    <td>${productBrand}</td>
-    <td>${productQuantity}</td>
-    <td>$${productPrice}</td>`;
-
-    tbody.innerHTML += tr;
 }

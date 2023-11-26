@@ -5,7 +5,10 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 import com.google.gson.Gson;
 import com.shop.items.MenuDAO;
@@ -27,12 +30,31 @@ public class MenuMangeServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
+    public String getJSONFromReque(HttpServletRequest request) {
+        String reString = "";
+    	// 读取请求的输入流
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(request.getInputStream()))) {
+            StringBuilder requestBody = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                requestBody.append(line);
+            }
+
+            // requestBody.toString() 包含了从客户端发送的 JSON 数据
+            reString = requestBody.toString();
+            System.out.println("Received JSON data: " + reString);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+		return reString;
+    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		getJSONFromReque(request);
         String pathInfo = request.getPathInfo();
 
         if (pathInfo == null || pathInfo.equals("/")) {
@@ -85,7 +107,25 @@ public class MenuMangeServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		// doGet(request, response);
+		String jsonString = getJSONFromReque(request);
+		try {
+			Gson gson = new Gson();
+			MenuItem menuItem = gson.fromJson(jsonString, MenuItem.class);
+			MenuDAO menuDAO = new MenuDAO();
+		
+			menuDAO.addOrderToMenu(menuItem);
+	         // 设置响应的内容类型
+	         response.setContentType("application/json");
+	         // 设置响应状态码
+	         response.setStatus(HttpServletResponse.SC_OK);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+		}
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
 	}
 
 }

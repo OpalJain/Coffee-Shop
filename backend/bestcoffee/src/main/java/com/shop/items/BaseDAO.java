@@ -99,7 +99,6 @@ public abstract class BaseDAO {
 		            }
 		        }
 			}
-			
 			list.add(t);
 		}
 		

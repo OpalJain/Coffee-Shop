@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Shop Admin</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/dashboard.css">
+</head>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link href="https://unpkg.com/tabulator-tables@5.5.2/dist/css/tabulator.min.css" rel="stylesheet">
+<script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.5.2/dist/js/tabulator.min.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+
+        <body>
+            <!-- GRID CONTAINER
+            ========================================================================================-->
+            <div class="grid-container">
+                    <header class="header">
+                        <!-- Header content-->
+                                <div class="header__welcome">Welcome Today!</div>
+                                <div class="header__accoutn">Your Account</div>
+                                
+                    </header>
+                    <aside class="sidenav">
+                        <!-- Sidenav content-->
+                        <ul class="sidenav__list">
+								<a href="index.html" class="sidenav__link" ><li class="sidenav__list-item"><i class="fas fa-bell side__nav__icons"></i>Dashboard</li></a>
+                                <a><li class="sidenav__list-item"><i class="fas fa-bell side__nav__icons"></i>Notification</li></a>
+                                <li class="sidenav__list-item"><i class="fas fa-users side__nav__icons"></i>Teachers</li>
+                                <li class="sidenav__list-item"><i class="fas fa-graduation-cap side__nav__icons"></i>Students</li>
+                                <li class="sidenav__list-item"><i class="fas fa-hotel side__nav__icons"></i>Hostel</li>
+                                <li class="sidenav__list-item"><i class="fas fa-shopping-cart side__nav__icons"></i>Expenditure</li>
+                                <li class="sidenav__list-item"><i class="fas fa-trophy side__nav__icons"></i>Competitions</li>
+                                <li class="sidenav__list-item"><i class="fas fa-flask side__nav__icons"></i>Laboratory</li>
+                                <li class="sidenav__list-item"><i class="fas fa-credit-card side__nav__icons"></i>Fees</li>
+                              </ul>
+                             <div class="sidenav__close-icon">
+   							<i class="fas fa-times"></i>
+                    </aside>
+                    		<main class="main">
+                              	<div class="container">
+        <div class="heading">
+          <h2>
+            <button type="button" onclick="clearCurrentInventory()" class="btn btn-danger">
+              Refresh
+            </button>
+          </h2>
+          <div class="add-item">
+                <form class="form">
+                  <div class="mb-3">
+                    <label class="form-label">
+                      Product Name:
+                      <input
+                        id="current_order_product_name"
+                        class="form-control"
+                        type="text"
+                        required
+                      />
+                    </label>
+                    <label class="form-label">
+                      Description:
+                      <input
+                        id="current_order_product_brand"
+                        class="form-control"
+                        type="text"
+                        required
+                      />
+                    </label>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">
+                      Image:
+                      <input
+                        id="current_order_product_quantity"
+                        class="form-control"
+                        type="text"
+                        required
+                      />
+                    </label>
+                    <label class="form-label">
+                      Price:
+                      <input
+                        id="current_order_product_price"
+                        class="form-control"
+                        type="number"
+                        required
+                      />
+                    </label>
+                  </div>
+                  <div class="mb-3">
+                    <button
+                      class="btn btn-success"
+                      onclick="addCurrentInventory()"
+                      type="button"
+                    >
+                      Add
+                    </button>
+                    <button class="btn btn-danger" type="reset">Reset</button>
+                  </div>
+                </form>
+              </div>
+          <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">name</th>
+                    <th scope="col">description</th>
+                    <th scope="col">image</th>
+                    <th scope="col">price</th>
+                  </tr>
+                </thead>
+                <tbody id="current_inventory_list">
+  
+                </tbody>
+                
+              </table>
+            </div>
+        </div>
+    	</div>
+    	                    <footer class="footer">
+                        <!-- Footer Content-->
+                        <div class="footer__copyright">&copy; 2023 Your Coffee Shop</div>
+                    </footer>
+        </main>
+
+                </div>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <script src="main2.js"></script>
+        </body>
+	<script>
+    // get menu
+    var menuLink = document.getElementById('menuLink');
+
+    
+    
+    // order data
+    var orderLink = document.getElementById('orders');
+    // add listening event
+    orderLink.addEventListener('click', function () {
+		console.log("catched click activity");
+        axios.get('http://localhost:5001/bestcoffee/cart-orders')
+            .then(function (response) {
+                var orderDataContainer = document.getElementById('orderDataContainer');
+                orderDataContainer.innerHTML = '<p>' + JSON.stringify(response.data) + '</p>';
+                console.log(response.data);
+            })
+            .catch(function (error) {
+                // handle errors
+                console.error('Error fetching orders data:', error);
+            });
+    }); 
+
+	</script>
+</html>

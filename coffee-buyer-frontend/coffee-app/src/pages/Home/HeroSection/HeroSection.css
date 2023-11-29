@@ -1,0 +1,60 @@
+.hero-section {
+    position: relative;
+}
+
+.hero-section > .hero-section--swiper:before {
+    z-index: -1;
+    content: ' ';
+    position: absolute;
+    inset: 0;
+    background-color: #000;
+    opacity: 0.7;
+}
+
+.hero-section > .hero-section--swiper {
+    --hero-section-swiper-height: 95dvh;
+
+    z-index: 1;
+    position: relative;
+    min-height: var(--hero-section-swiper-height);
+    max-height:  var(--hero-section-swiper-height);
+    object-fit: cover;
+    min-width: 100%;
+    overflow: clip;
+}
+
+.slogans-section {
+    z-index: 2;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    background-color: #fd9d3e;
+}
+
+.brush {
+    position: absolute;
+    min-width: 100%;
+    min-height: 200px;
+    object-fit: fill;
+}
+
+.brush1 {
+    top: -200px;
+}
+
+.brush2 {
+    rotate: 180deg;
+    bottom: -200px;
+}
+
+.slogans-section > .content {
+    margin: 0 auto;
+    max-width: 1280px;
+    display: flex;
+    flex-direction: row;
+    padding-block: 50px;
+}
+
+.pizza-slide2 > .pictures {
+    max-width: 200px;
+}

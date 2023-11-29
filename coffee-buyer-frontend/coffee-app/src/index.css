@@ -1,0 +1,38 @@
+:root {
+    --fc-black-text: #121619;
+    --fc-white-text: #f6f6f6;
+    --fc-gray: #999999;
+
+    --c-primary: #fd9d3e;
+    --c-secondary: #121619;
+    --hover-duration: 200ms;
+}
+
+body {
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    user-select: none;
+}
+
+body,
+input,
+button {
+    font-family: 'Poppins', sans-serif;
+}
+
+button {
+    font-family: 'Poppins', sans-serif;
+}
+
+.link {
+    color: white;
+    font-size: 14px;
+    color: white;
+    text-decoration: none;
+    transition-duration: var(--hover-duration);
+}
+
+.link:hover {
+    color: var(--c-primary);
+}

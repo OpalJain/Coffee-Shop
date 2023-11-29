@@ -156,7 +156,7 @@ function addCurrentInventory() {
     let ids = tbody.rows.length + 1;
     console.log("ids = " + ids);
     
-  // data preparing
+        // 准备要发送的数据
 	const dataToSend = {
 	  "id": ids,
 	  "name": productName,
@@ -165,7 +165,7 @@ function addCurrentInventory() {
 	  "price": productPrice
 	};
 
-	// send POST to update data
+	// 发送 POST 请求
 	axios.post('http://localhost:5001/bestcoffee/menu', dataToSend)
 	  .then(response => {
 	    console.log('Server response:', response.data);

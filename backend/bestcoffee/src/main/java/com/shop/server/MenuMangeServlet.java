@@ -30,9 +30,10 @@ public class MenuMangeServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
+	
+	// for debugging
     public String getJSONFromReque(HttpServletRequest request) {
         String reString = "";
-    	// 读取请求的输入流
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(request.getInputStream()))) {
             StringBuilder requestBody = new StringBuilder();
             String line;
@@ -40,7 +41,6 @@ public class MenuMangeServlet extends HttpServlet {
                 requestBody.append(line);
             }
 
-            // requestBody.toString() 包含了从客户端发送的 JSON 数据
             reString = requestBody.toString();
             System.out.println("Received JSON data: " + reString);
         } catch (IOException e) {
@@ -61,11 +61,9 @@ public class MenuMangeServlet extends HttpServlet {
             try {
 				MenuObjs menuObjs = menuDAO.GetMenuData();
 				String responseData = menuObjs.toString();
-		         // 设置响应的内容类型
 		         response.setContentType("application/json");
-		         // 设置响应状态码
 		         response.setStatus(HttpServletResponse.SC_OK);
-		         // 将 JSON 数据写入响应流
+		         
 		         response.getWriter().write(responseData);
 		         response.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
 		         response.setHeader("Access-Control-Allow-Credentials", "true");
@@ -84,11 +82,10 @@ public class MenuMangeServlet extends HttpServlet {
 					MenuItem menuItem = menuDAO.GetMenuProductById(index);
 					Gson gson = new Gson();
 					String responseData = gson.toJson(menuItem);
-			         // 设置响应的内容类型
-			         response.setContentType("application/json");
-			         // 设置响应状态码
+			         
+			         response.setContentType("application/json");		         
 			         response.setStatus(HttpServletResponse.SC_OK);
-			         // 将 JSON 数据写入响应流
+			         
 			         response.getWriter().write(responseData);
 			         response.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
 			         response.setHeader("Access-Control-Allow-Credentials", "true");
@@ -115,9 +112,8 @@ public class MenuMangeServlet extends HttpServlet {
 			MenuDAO menuDAO = new MenuDAO();
 		
 			menuDAO.addOrderToMenu(menuItem);
-	         // 设置响应的内容类型
+	         
 	         response.setContentType("application/json");
-	         // 设置响应状态码
 	         response.setStatus(HttpServletResponse.SC_OK);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

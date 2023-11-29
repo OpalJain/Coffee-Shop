@@ -109,6 +109,17 @@ function getMenuData() {
     document.querySelector("#current_inventory_list").innerHTML = "";
 }
 
+function getIndex(tbody) {
+    let index = tbody.children.length || 0;
+    return index;
+}
+
+function is_empty(string) {
+    if (string.length == 0) {
+        return true;
+    }
+    return false;
+}
 
 function addCurrentInventory() {
     let productName = document.querySelector("#current_order_product_name").value;
@@ -145,7 +156,7 @@ function addCurrentInventory() {
     let ids = tbody.rows.length + 1;
     console.log("ids = " + ids);
     
-        // 准备要发送的数据
+  // data preparing
 	const dataToSend = {
 	  "id": ids,
 	  "name": productName,
@@ -154,7 +165,7 @@ function addCurrentInventory() {
 	  "price": productPrice
 	};
 
-	// 发送 POST 请求
+	// send POST to update data
 	axios.post('http://localhost:5001/bestcoffee/menu', dataToSend)
 	  .then(response => {
 	    console.log('Server response:', response.data);

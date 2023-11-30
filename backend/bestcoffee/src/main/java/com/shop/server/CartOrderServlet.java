@@ -175,13 +175,13 @@ public class CartOrderServlet extends HttpServlet {
     }
     
     protected void doOptions(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // 设置 CORS 头信息
+        // Set CORS header information
         response.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
         response.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
         response.setHeader("Access-Control-Allow-Headers", "Content-Type");
         response.setHeader("Access-Control-Allow-Credentials", "true");
 
-        // 结束预检请求
+        // End preflight request
         response.setStatus(HttpServletResponse.SC_OK);
         System.out.println("-----------doOptions----------------");
     }
